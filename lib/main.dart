@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:story_interview_app/repositories/caterory_repository.dart';
+import 'package:story_interview_app/repositories/story_repository.dart';
 import 'package:story_interview_app/routes/app_routes.dart';
 
 import 'routes/app_pages.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
 
 Future<void> initialRepositories() async {
   Get.put(CategoryRepository());
+  Get.put(StoryRepository());
 
   // DBService, ...
 }

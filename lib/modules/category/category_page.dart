@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:story_interview_app/app/app_dimens.dart';
 import 'package:story_interview_app/models/entity/category.dart';
 import 'package:story_interview_app/modules/category/category_controller.dart';
+import 'package:story_interview_app/routes/app_routes.dart';
 import 'package:story_interview_app/shared/widget/base_page.dart';
 
 class CategoryPage extends GetView<CategoryController> {
@@ -39,17 +40,22 @@ class CategoryPage extends GetView<CategoryController> {
   }
 
   Widget _buildItem(Category category) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Text(
-        category.name ?? "",
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: AppDimens.LARGE_TEXT_SIZE.sp,
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(AppRoutes.CATEGORY_STORY, arguments: category);
+      },
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Text(
+          category.name ?? "",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AppDimens.LARGE_TEXT_SIZE.sp,
+          ),
         ),
       ),
     );

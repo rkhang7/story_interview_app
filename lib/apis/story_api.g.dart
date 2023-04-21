@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'categoty_api.dart';
+part of 'story_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'categoty_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _CategoryApi implements CategoryApi {
-  _CategoryApi(
+class _StoryApi implements StoryApi {
+  _StoryApi(
     this._dio, {
     this.baseUrl,
   }) {
@@ -19,31 +19,6 @@ class _CategoryApi implements CategoryApi {
   final Dio _dio;
 
   String? baseUrl;
-
-  @override
-  Future<List<Category>> getCategories() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Category>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/category',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
-  }
 
   @override
   Future<List<Story>> getStoriesByCategoryId(

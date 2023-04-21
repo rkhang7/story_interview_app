@@ -5,11 +5,11 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:story_interview_app/models/entity/category.dart';
 import 'package:story_interview_app/models/entity/story.dart';
-part 'categoty_api.g.dart';
+part 'story_api.g.dart';
 
 @RestApi(baseUrl: AppConstant.BASE_URL)
-abstract class CategoryApi {
-  factory CategoryApi(Dio dio, {String? baseUrl}) {
+abstract class StoryApi {
+  factory StoryApi(Dio dio, {String? baseUrl}) {
     dio.interceptors.clear();
     dio.options = BaseOptions(receiveTimeout: 60000, connectTimeout: 60000);
 
@@ -35,16 +35,6 @@ abstract class CategoryApi {
         }
       }
     }));
-    return _CategoryApi(dio, baseUrl: baseUrl);
+    return _StoryApi(dio, baseUrl: baseUrl);
   }
-
-  @GET("/category")
-  Future<List<Category>> getCategories();
-
-  @GET("/category/id/{id}/story")
-  Future<List<Story>> getStoriesByCategoryId(
-    @Path() String id,
-    @Query("page") int page,
-    @Query("limit") int limit,
-  );
 }
