@@ -159,7 +159,6 @@ class SlugChapterPage extends GetView<SlugChapterController> {
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 Chapter chapter = controller.listChapterLast5item[index];
-
                 return BaseButton(
                   onPressed: () {},
                   backgroundColor: Colors.grey.shade100,

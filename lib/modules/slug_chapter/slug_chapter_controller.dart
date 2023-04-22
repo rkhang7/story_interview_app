@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:story_interview_app/base/base_controller.dart';
-import 'package:story_interview_app/models/entity/chapter.dart' as chapter;
+import 'package:story_interview_app/models/entity/chapter.dart';
 import 'package:story_interview_app/models/entity/story.dart';
 
 class SlugChapterController extends BaseController {
-  final listChapter = <chapter.Chapter>[].obs;
-  final listChapterLast5item = <chapter.Chapter>[].obs;
+  final listChapter = <Chapter>[].obs;
+  final listChapterLast5item = <Chapter>[].obs;
   Story story = Get.arguments as Story;
 
   @override
