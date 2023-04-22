@@ -21,33 +21,26 @@ class _StoryApi implements StoryApi {
   String? baseUrl;
 
   @override
-  Future<List<Story>> getStoriesByCategoryId(
-    id,
-    page,
-    limit,
-  ) async {
+  Future<List<Chapter>> getChapters(slug) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'limit': limit,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Story>>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Chapter>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/category/id/${id}/story',
+              '/story/${slug}/chapters',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => Story.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Chapter.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

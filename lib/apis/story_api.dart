@@ -4,6 +4,7 @@ import 'package:story_interview_app/app/app_constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:story_interview_app/models/entity/category.dart';
+import 'package:story_interview_app/models/entity/chapter.dart';
 import 'package:story_interview_app/models/entity/story.dart';
 part 'story_api.g.dart';
 
@@ -37,4 +38,9 @@ abstract class StoryApi {
     }));
     return _StoryApi(dio, baseUrl: baseUrl);
   }
+
+  @GET("/story/{slug}/chapters")
+  Future<List<Chapter>> getChapters(
+    @Path() String slug,
+  );
 }

@@ -6,6 +6,7 @@ import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:story_interview_app/app/app_dimens.dart';
 import 'package:story_interview_app/models/entity/story.dart';
 import 'package:story_interview_app/modules/category_story/category_story_controller.dart';
+import 'package:story_interview_app/routes/app_routes.dart';
 import 'package:story_interview_app/shared/func/utils.dart';
 import 'package:story_interview_app/shared/widget/base_page.dart';
 
@@ -55,57 +56,62 @@ class CategoryStoryPage extends GetView<CategotyStoryController> {
   }
 
   Widget _buildItem(Story story) {
-    return Container(
-      color: Colors.grey.shade200,
-      padding: EdgeInsets.all(8),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: SizedBox(
-              height: 300.h,
-              width: 300.w,
-              child: CircleAvatar(
-                radius: 30.0,
-                backgroundImage: NetworkImage(
-                  story.poster ?? "",
-                  scale: 3,
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(AppRoutes.SLUG_CHAPTER, arguments: story);
+      },
+      child: Container(
+        color: Colors.grey.shade200,
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: SizedBox(
+                height: 300.h,
+                width: 300.w,
+                child: CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: NetworkImage(
+                    story.poster ?? "",
+                    scale: 3,
+                  ),
+                  backgroundColor: Colors.transparent,
                 ),
-                backgroundColor: Colors.transparent,
               ),
             ),
-          ),
-          // SizedBox(
-          //   width: 30.w,
-          // ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  story.title ?? "",
-                  overflow: TextOverflow.visible,
-                  style: TextStyle(
-                    fontSize: 72.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+            // SizedBox(
+            //   width: 30.w,
+            // ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    story.title ?? "",
+                    overflow: TextOverflow.visible,
+                    style: TextStyle(
+                      fontSize: 72.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Text(
-                  story.author ?? "",
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Text(Utils.convertDateTime(story.updatedDate ?? ""))
-              ],
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    story.author ?? "",
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(Utils.convertDateTime(story.updatedDate ?? ""))
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
