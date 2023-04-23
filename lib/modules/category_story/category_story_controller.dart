@@ -6,7 +6,7 @@ import 'package:story_interview_app/models/entity/story.dart';
 
 class CategotyStoryController extends BaseController {
   int _page = 1;
-  int _limit = 30;
+  final int _limit = 30;
 
   Category category = Get.arguments as Category;
 

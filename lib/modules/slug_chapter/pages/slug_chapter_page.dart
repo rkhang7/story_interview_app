@@ -92,7 +92,7 @@ class SlugChapterPage extends GetView<SlugChapterController> {
           color: Colors.grey.shade100, borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: controller.story.description
+        children: (controller.story.description ?? [])
             .map(
               (e) => Text(
                 e,
@@ -110,7 +110,12 @@ class SlugChapterPage extends GetView<SlugChapterController> {
   Widget _buildReadStoryButton() {
     return BaseButton(
       backgroundColor: Colors.blue,
-      onPressed: () {},
+      onPressed: () {
+        Get.toNamed(
+          AppRoutes.DETAIL_CHAPTER,
+          arguments: [controller.listChapter, 0],
+        );
+      },
       height: 150.h,
       borderRadius: 36,
       width: Get.width / 1.5,
@@ -160,7 +165,16 @@ class SlugChapterPage extends GetView<SlugChapterController> {
               itemBuilder: (context, index) {
                 Chapter chapter = controller.listChapterLast5item[index];
                 return BaseButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(
+                      AppRoutes.DETAIL_CHAPTER,
+                      arguments: [
+                        controller.listChapter,
+                        controller.listChapter
+                            .indexWhere((element) => element.id == chapter.id),
+                      ],
+                    );
+                  },
                   backgroundColor: Colors.grey.shade100,
                   borderRadius: 8,
                   elevation: 0,

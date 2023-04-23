@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:story_interview_app/app/app_dimens.dart';
 import 'package:story_interview_app/models/entity/chapter.dart';
 import 'package:story_interview_app/modules/slug_chapter/slug_chapter_controller.dart';
+import 'package:story_interview_app/routes/app_routes.dart';
 import 'package:story_interview_app/shared/widget/base_button.dart';
 import 'package:story_interview_app/shared/widget/base_page.dart';
 
@@ -46,7 +47,16 @@ class ListChapterPage extends GetView<SlugChapterController> {
         itemBuilder: (context, index) {
           Chapter chapter = controller.listChapter.reversed.toList()[index];
           return BaseButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(
+                AppRoutes.DETAIL_CHAPTER,
+                arguments: [
+                  controller.listChapter,
+                  controller.listChapter
+                      .indexWhere((element) => element.id == chapter.id),
+                ],
+              );
+            },
             backgroundColor: Colors.grey.shade100,
             borderRadius: 12,
             elevation: 0,

@@ -45,6 +45,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   lazy_load_scrollview: ^1.3.0
   intl: ^0.18.1
+  flutter_html: ^3.0.0-alpha.6
 
 dev_dependencies:
   flutter_test:

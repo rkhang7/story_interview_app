@@ -11,12 +11,12 @@ Story _$StoryFromJson(Map<String, dynamic> json) => Story(
       title: json['title'] as String?,
       author: json['author'] as String?,
       slug: json['slug'] as String?,
-      description: (json['description'] as List<dynamic>)
-          .map((e) => e as String)
+      description: (json['description'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
       poster: json['poster'] as String?,
-      categoryList: (json['categoryList'] as List<dynamic>)
-          .map((e) => e as String)
+      categoryList: (json['categoryList'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
       status: json['status'] as String?,
       uploadDate: json['uploadDate'] as String?,

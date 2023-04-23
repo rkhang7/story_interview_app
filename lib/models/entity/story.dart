@@ -7,9 +7,9 @@ class Story {
   String? title;
   String? author;
   String? slug;
-  List<String> description;
+  List<String>? description;
   String? poster;
-  List<String> categoryList;
+  List<String>? categoryList;
   String? status;
   String? uploadDate;
   String? updatedDate;
