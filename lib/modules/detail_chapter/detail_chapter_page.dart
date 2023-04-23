@@ -37,7 +37,6 @@ class DetailChapterPage extends GetView<DetailChapterController> {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: SingleChildScrollView(
-        physics: PageScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -51,7 +50,7 @@ class DetailChapterPage extends GetView<DetailChapterController> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SingleChildScrollView(child: Utils.convertHTMLtoWidget(body)),
+            Utils.convertHTMLtoWidget(body),
           ],
         ),
       ),
