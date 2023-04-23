@@ -19,10 +19,6 @@ class CategotyStoryController extends BaseController {
   }
 
   void loadMore() {
-    // if (dailyLogList.length >= _totalItem) {
-    //   EasyLoading.showToast("loaded_all_data_from_system".tr);
-    //   return;
-    // }
     _page += 1;
     _fetchListStoryByCategoryId(page: _page);
   }

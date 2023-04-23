@@ -16,6 +16,7 @@ class DetailChapterPage extends GetView<DetailChapterController> {
       body: BasePage(
         child: Obx(
           () => PageView.builder(
+            scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return _buildItem(
                 header: controller.listChapter[index].header ?? "",
@@ -36,6 +37,7 @@ class DetailChapterPage extends GetView<DetailChapterController> {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: SingleChildScrollView(
+        physics: PageScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -49,7 +51,7 @@ class DetailChapterPage extends GetView<DetailChapterController> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Utils.convertHTMLtoWidget(body),
+            SingleChildScrollView(child: Utils.convertHTMLtoWidget(body)),
           ],
         ),
       ),

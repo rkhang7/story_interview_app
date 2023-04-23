@@ -15,14 +15,6 @@ class DetailChapterController extends BaseController {
     super.onInit();
   }
 
-  Future<List<String>> fetchChapterById({required String id}) async {
-    await chapterRepository.getChapterById(id: id).then((value) {
-      return value.body;
-    });
-
-    return [];
-  }
-
   void _initBodyChapter() async {
     listChapter.value = Get.arguments[0] as List<Chapter>;
     showLoading();
